@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Mah-jongg">
+  <link rel="apple-touch-icon" href="data:image/png;base64,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">
+  <title>Mah-jongg Score</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red:      #B22222;
+      --red-dark: #8B0000;
+      --gold:     #C9A020;
+      --gold-lt:  #FFF3CD;
+      --bg:       #F5EFE6;
+      --card:     #FFFFFF;
+      --txt:      #1C1C1E;
+      --txt2:     #6B6B6B;
+      --ok:       #2E7D32;
+      --ko:       #B22222;
+      --radius:   14px;
+      --shadow:   0 2px 12px rgba(0,0,0,.10);
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      background: var(--bg);
+      color: var(--txt);
+      -webkit-text-size-adjust: 100%;
+      min-height: 100svh;
+    }
+
+    /* ── Screens ── */
+    .scr { display: none; flex-direction: column; min-height: 100svh; }
+    .scr.on { display: flex; }
+
+    /* ── Header ── */
+    .hdr {
+      background: linear-gradient(160deg, var(--red-dark) 0%, var(--red) 100%);
+      color: #fff;
+      padding: max(52px, calc(env(safe-area-inset-top) + 20px)) 18px 18px;
+      text-align: center;
+    }
+    .hdr-icon { font-size: 42px; line-height: 1; margin-bottom: 6px; }
+    .hdr h1   { font-size: 22px; font-weight: 700; letter-spacing: .4px; }
+    .hdr .sub { font-size: 13px; opacity: .78; margin-top: 3px; }
+
+    /* ── Content ── */
+    .body {
+      flex: 1;
+      padding: 14px 14px 6px;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* ── Card ── */
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin-bottom: 12px;
+      box-shadow: var(--shadow);
+    }
+    .card-title {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .6px;
+      color: var(--red);
+      margin-bottom: 12px;
+    }
+
+    /* ── Footer ── */
+    .foot {
+      position: sticky;
+      bottom: 0;
+      background: var(--bg);
+      padding: 6px 14px calc(env(safe-area-inset-bottom) + 14px);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      z-index: 10;
+    }
+
+    /* ── Buttons ── */
+    .btn {
+      width: 100%;
+      height: 52px;
+      border-radius: 13px;
+      border: none;
+      font-size: 17px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity .15s, transform .1s;
+      letter-spacing: .2px;
+    }
+    .btn:active { opacity: .82; transform: scale(.98); }
+    .btn-main { background: var(--red); color: #fff; }
+    .btn-out  { background: #fff; color: var(--red); border: 1.5px solid var(--red); }
+    .btn-gold { background: var(--gold); color: #fff; }
+
+    /* ── Inputs ── */
+    .field { margin-bottom: 10px; }
+    .field label { display: block; font-size: 12px; font-weight: 600; color: var(--txt2); margin-bottom: 5px; }
+    input[type=text], input[type=number] {
+      width: 100%;
+      height: 48px;
+      border: 1.5px solid #D8D8D8;
+      border-radius: 10px;
+      padding: 0 13px;
+      font-size: 16px;
+      color: var(--txt);
+      background: #fff;
+      -webkit-appearance: none;
+      outline: none;
+    }
+    input[type=text]:focus, input[type=number]:focus { border-color: var(--red); }
+    input[type=number] { text-align: center; width: 90px; }
+
+    /* ── Player row ── */
+    .prow {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      padding: 10px 0;
+      border-bottom: 1px solid #F0F0F0;
+    }
+    .prow:last-child { border-bottom: none; padding-bottom: 0; }
+    .prow:first-child { padding-top: 0; }
+
+    .avatar {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; font-weight: 700; color: #fff;
+      flex-shrink: 0;
+    }
+    .av0 { background: #B22222; }
+    .av1 { background: #1565C0; }
+    .av2 { background: #2E7D32; }
+    .av3 { background: #6A1B9A; }
+
+    .pname { flex: 1; font-size: 15px; font-weight: 600; line-height: 1.3; }
+    .psub  { font-size: 11px; font-weight: 500; color: var(--txt2); margin-top: 1px; }
+
+    .pscore {
+      font-size: 20px; font-weight: 700;
+      min-width: 52px; text-align: right;
+    }
+    .pos { color: var(--ok); }
+    .neg { color: var(--ko); }
+    .zer { color: #AAA; }
+
+    /* ── Rank ── */
+    .rank {
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700;
+      flex-shrink: 0;
+    }
+    .rk1 { background: #FFD700; color: #7A5900; }
+    .rk2 { background: #C0C0C0; color: #444; }
+    .rk3 { background: #CD7F32; color: #fff; }
+    .rk4 { background: #E8E8E8; color: #999; }
+
+    /* ── Wind chips ── */
+    .wchip {
+      display: inline-block;
+      padding: 2px 7px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .wEST   { background: #FFF3E0; color: #E65100; }
+    .wSUD   { background: #FFEBEE; color: #B71C1C; }
+    .wOUEST { background: #E3F2FD; color: #0D47A1; }
+    .wNORD  { background: #E8F5E9; color: #1B5E20; }
+
+    /* ── Wind picker ── */
+    .wind-picker {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .wind-btn {
+      flex: 1;
+      min-width: 60px;
+      height: 42px;
+      border-radius: 9px;
+      border: 2px solid transparent;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .18s;
+      background: #F2F2F7;
+      color: var(--txt2);
+    }
+    .wind-btn:active { transform: scale(.95); }
+    .wind-btn.active-EST   { background: #FFF3E0; border-color: #E65100; color: #E65100; }
+    .wind-btn.active-SUD   { background: #FFEBEE; border-color: #B71C1C; color: #B71C1C; }
+    .wind-btn.active-OUEST { background: #E3F2FD; border-color: #0D47A1; color: #0D47A1; }
+    .wind-btn.active-NORD  { background: #E8F5E9; border-color: #1B5E20; color: #1B5E20; }
+    .wind-btn.taken { opacity: .38; }
+
+    /* ── MJ option ── */
+    .mj-opt {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      padding: 13px 12px;
+      border: 2px solid #E5E5EA;
+      border-radius: 11px;
+      margin-bottom: 8px;
+      cursor: pointer;
+      transition: all .18s;
+    }
+    .mj-opt:last-child { margin-bottom: 0; }
+    .mj-opt.sel { border-color: var(--gold); background: #FFFBEF; }
+    .mj-dot {
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      border: 2px solid #CCC;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px;
+      color: transparent;
+      transition: all .18s;
+      flex-shrink: 0;
+    }
+    .mj-opt.sel .mj-dot { background: var(--gold); border-color: var(--gold); color: #fff; }
+
+    /* ── Info box ── */
+    .info-box {
+      background: #FFFBEF;
+      border: 1.5px solid #F0D060;
+      border-radius: 11px;
+      padding: 12px 14px;
+      font-size: 13px;
+      color: #7A5900;
+      line-height: 1.55;
+      margin-bottom: 12px;
+    }
+
+    /* ── Stats row ── */
+    .stats-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .stat {
+      flex: 1;
+      background: var(--card);
+      border-radius: 12px;
+      padding: 12px 10px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+    .stat-v { font-size: 22px; font-weight: 700; color: var(--red); }
+    .stat-l { font-size: 11px; color: var(--txt2); margin-top: 2px; }
+
+    /* ── Delta badge ── */
+    .delta { font-size: 17px; font-weight: 700; min-width: 60px; text-align: right; }
+
+    /* ── Animation ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .anim { animation: fadeUp .28s ease; }
+  </style>
+</head>
+<body>
+<div id="js-diag" style="position:fixed;top:0;left:0;right:0;z-index:9999;background:#B22222;color:#fff;font-size:15px;font-weight:700;text-align:center;padding:8px;display:block">JS non charge !</div>
+
+<!-- ═══════════════════════════════════════════
+     ÉCRAN 1 — SETUP
+═══════════════════════════════════════════ -->
+<div class="scr on" id="s-setup">
+  <div class="hdr">
+    <div class="hdr-icon">🀄</div>
+    <h1>Mah-jongg Score</h1>
+    <div class="sub">Compteur de points</div>
+  </div>
+  <div class="body">
+    <div class="card anim">
+      <div class="card-title">Noms des joueurs</div>
+      <div class="field">
+        <label>Joueur 1</label>
+        <input type="text" id="n0" placeholder="Nom du joueur 1" autocorrect="off" autocapitalize="words">
+      </div>
+      <div class="field">
+        <label>Joueur 2</label>
+        <input type="text" id="n1" placeholder="Nom du joueur 2" autocorrect="off" autocapitalize="words">
+      </div>
+      <div class="field">
+        <label>Joueur 3</label>
+        <input type="text" id="n2" placeholder="Nom du joueur 3" autocorrect="off" autocapitalize="words">
+      </div>
+      <div class="field" style="margin-bottom:0">
+        <label>Joueur 4</label>
+        <input type="text" id="n3" placeholder="Nom du joueur 4" autocorrect="off" autocapitalize="words">
+      </div>
+    </div>
+  </div>
+  <div class="foot">
+    <div id="setup-err" style="display:none;background:#FFF0F0;border:1.5px solid var(--red);border-radius:11px;padding:11px 14px;font-size:14px;color:var(--red);text-align:center;font-weight:600;margin-bottom:6px;"></div>
+    <button class="btn btn-main" id="btn-start" onclick="startGame()">Commencer →</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     ÉCRAN 2 — SCOREBOARD
+═══════════════════════════════════════════ -->
+<div class="scr" id="s-board">
+  <div class="hdr">
+    <div class="hdr-icon">🀄</div>
+    <h1>Scores</h1>
+    <div class="sub" id="board-sub">0 manche jouée</div>
+  </div>
+  <div class="body">
+    <div class="stats-row">
+      <div class="stat">
+        <div class="stat-v" id="st-manches">0</div>
+        <div class="stat-l">Manches jouées</div>
+      </div>
+      <div class="stat">
+        <div class="stat-v" id="st-leader" style="font-size:16px">–</div>
+        <div class="stat-l">En tête</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Classement</div>
+      <div id="board-list"></div>
+    </div>
+  </div>
+  <div class="foot">
+    <button class="btn btn-main" onclick="startManche()">+ Nouvelle Manche</button>
+    <button class="btn btn-out"  onclick="confirmReset()">Nouveau Jeu</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     ÉCRAN 3 — VENTS
+═══════════════════════════════════════════ -->
+<div class="scr" id="s-winds">
+  <div class="hdr">
+    <h1>Vents</h1>
+    <div class="sub" id="winds-sub">Manche 1</div>
+  </div>
+  <div class="body">
+    <div class="info-box">
+      💡 Le vent <strong>EST 東</strong> double les points perdus à chaque échange.
+    </div>
+    <div class="card anim">
+      <div class="card-title">Attribuer les vents</div>
+      <div id="winds-list"></div>
+    </div>
+  </div>
+  <div class="foot">
+    <button class="btn btn-main" onclick="validateWinds()">Suivant →</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     ÉCRAN 4 — POINTS
+═══════════════════════════════════════════ -->
+<div class="scr" id="s-points">
+  <div class="hdr">
+    <h1>Points</h1>
+    <div class="sub" id="pts-sub">Manche 1</div>
+  </div>
+  <div class="body">
+    <div class="card anim">
+      <div class="card-title">🏆 Qui a fait Mah-Jong ?</div>
+      <div id="mj-list"></div>
+    </div>
+    <div class="card anim">
+      <div class="card-title">Points réalisés par chaque joueur</div>
+      <div id="pts-list"></div>
+    </div>
+  </div>
+  <div class="foot">
+    <button class="btn btn-main" onclick="calcRound()">Calculer →</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     ÉCRAN 5 — RÉSULTATS
+═══════════════════════════════════════════ -->
+<div class="scr" id="s-results">
+  <div class="hdr">
+    <h1>Résultats</h1>
+    <div class="sub" id="res-sub">Manche 1</div>
+  </div>
+  <div class="body">
+    <div class="card anim">
+      <div class="card-title">Gain / Perte de la manche</div>
+      <div id="res-deltas"></div>
+    </div>
+    <div class="card anim">
+      <div class="card-title">Scores cumulés</div>
+      <div id="res-total"></div>
+    </div>
+  </div>
+  <div class="foot">
+    <button class="btn btn-main" onclick="endRound()">Terminer →</button>
+  </div>
+</div>
+
+<script>
+/* ══════════════════════════════════════════════
+   DIAGNOSTIC — modifie la page des le chargement du script
+══════════════════════════════════════════════ */
+var DBG = document.getElementById('js-diag');
+if (DBG) { DBG.textContent = 'JS charge OK'; DBG.style.background = '#2E7D32'; }
+
+/* ══════════════════════════════════════════════
+   ÉTAT  (ES5 pur — var uniquement)
+══════════════════════════════════════════════ */
+var WINDS   = ['EST','SUD','OUEST','NORD'];
+var WCHAR   = { EST:'\u6771', SUD:'\u5357', OUEST:'\u897F', NORD:'\u5317' };
+var AVCLASS = ['av0','av1','av2','av3'];
+
+var G = {
+  players  : ['','','',''],
+  scores   : [0,0,0,0],
+  manches  : 0,
+  winds    : {},
+  mj       : null,
+  lastDelta: [0,0,0,0]
+};
+
+/* ── persistence ── */
+function save() {
+  try { localStorage.setItem('mj_v2', JSON.stringify(G)); } catch(e) {}
+}
+function load() {
+  try {
+    var d = JSON.parse(localStorage.getItem('mj_v2'));
+    if (d && d.players && d.players.length === 4) { G = d; return true; }
+  } catch(e) {}
+  return false;
+}
+
+/* ── screens ── */
+function show(id) {
+  var screens = document.querySelectorAll('.scr');
+  for (var i = 0; i < screens.length; i++) {
+    screens[i].style.display = 'none';
+  }
+  var target = document.getElementById(id);
+  if (target) {
+    target.style.display = 'flex';
+    var unused = target.offsetHeight; // force repaint
+    window.scrollTo(0, 0);
+  }
+}
+
+/* ── helpers ── */
+function ini(n) { return (n || '?').charAt(0).toUpperCase(); }
+function esc(s) {
+  var d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+function cls(v) { return v > 0 ? 'pos' : v < 0 ? 'neg' : 'zer'; }
+function fmt(v) { return (v > 0 ? '+' : '') + v; }
+
+/* ══════════════════════════════════════════════
+   SETUP
+══════════════════════════════════════════════ */
+function showSetupErr(msg) {
+  var el = document.getElementById('setup-err');
+  if (!el) return;
+  el.textContent = msg;
+  el.style.display = 'block';
+}
+function hideSetupErr() {
+  var el = document.getElementById('setup-err');
+  if (el) el.style.display = 'none';
+}
+
+function startGame() {
+  try {
+    hideSetupErr();
+    var names = [];
+    for (var i = 0; i < 4; i++) {
+      var el = document.getElementById('n' + i);
+      names.push(el ? el.value.trim() : '');
+    }
+    for (var j = 0; j < 4; j++) {
+      if (!names[j]) {
+        showSetupErr('\u26a0\ufe0f Veuillez saisir les noms des 4 joueurs.');
+        return;
+      }
+    }
+    G = { players: names, scores: [0,0,0,0], manches: 0, winds: {}, mj: null, lastDelta: [0,0,0,0] };
+    save();
+    renderBoard();
+    show('s-board');
+  } catch (err) {
+    showSetupErr('Erreur : ' + (err && err.message ? err.message : String(err)));
+  }
+}
+
+/* ══════════════════════════════════════════════
+   SCOREBOARD
+══════════════════════════════════════════════ */
+function renderBoard() {
+  var m = G.manches;
+  document.getElementById('board-sub').textContent = m + ' manche' + (m > 1 ? 's' : '') + ' jou\u00e9e' + (m > 1 ? 's' : '');
+  document.getElementById('st-manches').textContent = m;
+
+  var sorted = [];
+  for (var i = 0; i < 4; i++) { sorted.push({ i: i, s: G.scores[i] }); }
+  sorted.sort(function(a, b) { return b.s - a.s; });
+
+  document.getElementById('st-leader').textContent = m > 0 ? G.players[sorted[0].i] : '\u2013';
+
+  var rankCls = ['rk1','rk2','rk3','rk4'];
+  var html = '';
+  for (var r = 0; r < 4; r++) {
+    var p = sorted[r];
+    html += '<div class="prow">' +
+      '<div class="rank ' + rankCls[r] + '">' + (r+1) + '</div>' +
+      '<div class="avatar ' + AVCLASS[p.i] + '">' + ini(G.players[p.i]) + '</div>' +
+      '<div class="pname">' + esc(G.players[p.i]) + '</div>' +
+      '<div class="pscore ' + cls(p.s) + '">' + fmt(p.s) + '</div>' +
+      '</div>';
+  }
+  document.getElementById('board-list').innerHTML = html;
+}
+
+function confirmReset() {
+  if (confirm('Commencer un nouveau jeu ? Les scores seront perdus.')) {
+    try { localStorage.removeItem('mj_v2'); } catch(e) {}
+    for (var i = 0; i < 4; i++) {
+      var el = document.getElementById('n' + i);
+      if (el) el.value = '';
+    }
+    show('s-setup');
+  }
+}
+
+/* ══════════════════════════════════════════════
+   VENTS
+══════════════════════════════════════════════ */
+function startManche() {
+  G.manches++;
+  G.winds = {};
+  G.mj = null;
+  save();
+  document.getElementById('winds-sub').textContent = 'Manche ' + G.manches;
+  renderWinds();
+  show('s-winds');
+}
+
+function renderWinds() {
+  /* construire la liste des vents deja pris */
+  var takenWinds = {};
+  var keys = Object.keys(G.winds);
+  for (var k = 0; k < keys.length; k++) {
+    takenWinds[G.winds[keys[k]]] = true;
+  }
+
+  var html = '';
+  for (var i = 0; i < 4; i++) {
+    html += '<div class="prow">' +
+      '<div class="avatar ' + AVCLASS[i] + '">' + ini(G.players[i]) + '</div>' +
+      '<div class="pname">' + esc(G.players[i]) + '</div>' +
+      '<div class="wind-picker">';
+    for (var w = 0; w < WINDS.length; w++) {
+      var wind = WINDS[w];
+      var active = (G.winds[i] === wind);
+      var taken  = (takenWinds[wind] && !active);
+      html += '<button class="wind-btn' +
+        (active ? ' active-' + wind : '') +
+        (taken  ? ' taken' : '') +
+        '" onclick="setWind(' + i + ',\'' + wind + '\')">' +
+        WCHAR[wind] + '<br><span style="font-size:9px">' + wind + '</span></button>';
+    }
+    html += '</div></div>';
+  }
+  document.getElementById('winds-list').innerHTML = html;
+}
+
+function setWind(playerIdx, wind) {
+  var keys = Object.keys(G.winds);
+  for (var k = 0; k < keys.length; k++) {
+    if (G.winds[keys[k]] === wind) { delete G.winds[keys[k]]; }
+  }
+  G.winds[playerIdx] = wind;
+  renderWinds();
+}
+
+function validateWinds() {
+  for (var i = 0; i < 4; i++) {
+    if (!G.winds[i]) {
+      showSetupErr('Veuillez attribuer un vent \u00e0 ' + G.players[i] + '.');
+      return;
+    }
+  }
+  buildPtsScreen();
+  show('s-points');
+}
+
+/* ══════════════════════════════════════════════
+   POINTS
+══════════════════════════════════════════════ */
+function buildPtsScreen() {
+  document.getElementById('pts-sub').textContent = 'Manche ' + G.manches;
+
+  var mjHtml = '';
+  for (var i = 0; i < 4; i++) {
+    mjHtml += '<div class="mj-opt' + (G.mj === i ? ' sel' : '') + '" id="mj' + i + '" onclick="selMJ(' + i + ')">' +
+      '<div class="mj-dot">\u2713</div>' +
+      '<div class="avatar ' + AVCLASS[i] + '" style="width:34px;height:34px;font-size:14px">' + ini(G.players[i]) + '</div>' +
+      '<div>' +
+        '<div style="font-size:15px;font-weight:600">' + esc(G.players[i]) + '</div>' +
+        '<span class="wchip w' + G.winds[i] + '">' + WCHAR[G.winds[i]] + ' ' + G.winds[i] + '</span>' +
+      '</div>' +
+      '</div>';
+  }
+  document.getElementById('mj-list').innerHTML = mjHtml;
+
+  var ptsHtml = '';
+  for (var j = 0; j < 4; j++) {
+    ptsHtml += '<div class="prow">' +
+      '<div class="avatar ' + AVCLASS[j] + '" style="width:34px;height:34px;font-size:14px">' + ini(G.players[j]) + '</div>' +
+      '<div class="pname" style="font-size:14px">' +
+        esc(G.players[j]) + '<br>' +
+        '<span class="wchip w' + G.winds[j] + '">' + WCHAR[G.winds[j]] + ' ' + G.winds[j] + '</span>' +
+      '</div>' +
+      '<input type="number" id="p' + j + '" value="0" min="0" inputmode="numeric">' +
+      '</div>';
+  }
+  document.getElementById('pts-list').innerHTML = ptsHtml;
+}
+
+function selMJ(idx) {
+  G.mj = idx;
+  var opts = document.querySelectorAll('.mj-opt');
+  for (var i = 0; i < opts.length; i++) {
+    if (i === idx) { opts[i].classList.add('sel'); }
+    else           { opts[i].classList.remove('sel'); }
+  }
+}
+
+/* ══════════════════════════════════════════════
+   CALCUL
+══════════════════════════════════════════════ */
+function calcRound() {
+  if (G.mj === null) {
+    showSetupErr('Veuillez s\u00e9lectionner le joueur qui a fait Mah-Jong.');
+    return;
+  }
+
+  var pts = [];
+  for (var i = 0; i < 4; i++) {
+    var val = parseInt(document.getElementById('p' + i).value, 10) || 0;
+    pts.push(Math.max(0, val));
+  }
+
+  var deltas = [0,0,0,0];
+  var mjIdx  = G.mj;
+  var mjPts  = pts[mjIdx];
+  var nonMJ  = [];
+  for (var n = 0; n < 4; n++) { if (n !== mjIdx) nonMJ.push(n); }
+
+  /* Phase 1 — paiement au MJ */
+  var mjGet = 0;
+  for (var a = 0; a < nonMJ.length; a++) {
+    var p   = nonMJ[a];
+    var pay = (G.winds[p] === 'EST') ? 2 * mjPts : mjPts;
+    deltas[p] -= pay;
+    mjGet     += pay;
+  }
+  deltas[mjIdx] += mjGet;
+
+  /* Phase 2 — échanges entre non-MJ */
+  for (var b = 0; b < nonMJ.length; b++) {
+    var cur    = nonMJ[b];
+    var curPts = pts[cur];
+    var others = [];
+    for (var c = 0; c < nonMJ.length; c++) {
+      if (nonMJ[c] !== cur) others.push(nonMJ[c]);
+    }
+    var curGet = 0;
+    for (var d = 0; d < others.length; d++) {
+      var other  = others[d];
+      var opay   = (G.winds[other] === 'EST') ? 2 * curPts : curPts;
+      deltas[other] -= opay;
+      curGet        += opay;
+    }
+    deltas[cur] += curGet;
+  }
+
+  G.lastDelta = deltas;
+  for (var e = 0; e < 4; e++) { G.scores[e] += deltas[e]; }
+  save();
+  renderResults(pts);
+  show('s-results');
+}
+
+/* ══════════════════════════════════════════════
+   RÉSULTATS
+══════════════════════════════════════════════ */
+function renderResults(pts) {
+  document.getElementById('res-sub').textContent = 'Manche ' + G.manches;
+
+  var sortedD = [];
+  for (var i = 0; i < 4; i++) { sortedD.push({ i: i, d: G.lastDelta[i] }); }
+  sortedD.sort(function(a, b) { return b.d - a.d; });
+
+  var dHtml = '';
+  for (var r = 0; r < 4; r++) {
+    var p = sortedD[r];
+    dHtml += '<div class="prow">' +
+      '<div class="avatar ' + AVCLASS[p.i] + '">' + ini(G.players[p.i]) + '</div>' +
+      '<div class="pname">' +
+        esc(G.players[p.i]) + (p.i === G.mj ? ' \ud83c\udfc6' : '') +
+        '<div class="psub"><span class="wchip w' + G.winds[p.i] + '">' + WCHAR[G.winds[p.i]] + ' ' + G.winds[p.i] + '</span> \u00b7 ' + pts[p.i] + ' pts</div>' +
+      '</div>' +
+      '<div class="delta ' + cls(p.d) + '">' + fmt(p.d) + '</div>' +
+      '</div>';
+  }
+  document.getElementById('res-deltas').innerHTML = dHtml;
+
+  var sortedT = [];
+  for (var j = 0; j < 4; j++) { sortedT.push({ i: j, s: G.scores[j] }); }
+  sortedT.sort(function(a, b) { return b.s - a.s; });
+
+  var rankCls = ['rk1','rk2','rk3','rk4'];
+  var tHtml = '';
+  for (var t = 0; t < 4; t++) {
+    var q = sortedT[t];
+    tHtml += '<div class="prow">' +
+      '<div class="rank ' + rankCls[t] + '">' + (t+1) + '</div>' +
+      '<div class="avatar ' + AVCLASS[q.i] + '">' + ini(G.players[q.i]) + '</div>' +
+      '<div class="pname">' + esc(G.players[q.i]) + '</div>' +
+      '<div class="pscore ' + cls(q.s) + '">' + fmt(q.s) + '</div>' +
+      '</div>';
+  }
+  document.getElementById('res-total').innerHTML = tHtml;
+}
+
+function endRound() {
+  renderBoard();
+  show('s-board');
+}
+
+/* ══════════════════════════════════════════════
+   INIT
+══════════════════════════════════════════════ */
+(function init() {
+  /* masquer le bandeau de diagnostic : le JS tourne */
+  var diag = document.getElementById('js-diag');
+  if (diag) diag.style.display = 'none';
+
+  if (load() && G.players[0] && G.players[1] && G.players[2] && G.players[3]) {
+    renderBoard();
+    show('s-board');
+  } else {
+    show('s-setup');
+  }
+})();
+</script>
+</body>
+</html>
