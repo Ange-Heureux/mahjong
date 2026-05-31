@@ -332,8 +332,12 @@
         <div class="stat-l">En tête</div>
       </div>
     </div>
+    <div id="board-last-manche" style="display:none" class="card">
+      <div class="card-title">Dernière manche</div>
+      <div id="board-last-list"></div>
+    </div>
     <div class="card">
-      <div class="card-title">Classement</div>
+      <div class="card-title">Classement général</div>
       <div id="board-list"></div>
     </div>
   </div>
@@ -521,6 +525,29 @@ function renderBoard() {
 
   document.getElementById('st-leader').textContent = m > 0 ? G.players[sorted[0].i] : '\u2013';
 
+  /* \u2500\u2500 Derni\u00e8re manche \u2500\u2500 */
+  var lastCard = document.getElementById('board-last-manche');
+  if (m > 0 && G.lastDelta) {
+    lastCard.style.display = 'block';
+    var sortedLast = [];
+    for (var k = 0; k < 4; k++) { sortedLast.push({ i: k, d: G.lastDelta[k] }); }
+    sortedLast.sort(function(a, b) { return b.d - a.d; });
+    var lHtml = '';
+    for (var l = 0; l < 4; l++) {
+      var lp = sortedLast[l];
+      lHtml += '<div class="prow">' +
+        '<div class="avatar ' + AVCLASS[lp.i] + '">' + ini(G.players[lp.i]) + '</div>' +
+        '<div class="pname">' + esc(G.players[lp.i]) +
+          (lp.i === G.mj ? ' \ud83c\udfc6' : '') +
+        '</div>' +
+        '<div class="delta ' + cls(lp.d) + '">' + fmt(lp.d) + '</div>' +
+        '</div>';
+    }
+    document.getElementById('board-last-list').innerHTML = lHtml;
+  } else {
+    lastCard.style.display = 'none';
+  }
+
   var rankCls = ['rk1','rk2','rk3','rk4'];
   var html = '';
   for (var r = 0; r < 4; r++) {
@@ -594,6 +621,22 @@ function setWind(playerIdx, wind) {
     if (G.winds[keys[k]] === wind) { delete G.winds[keys[k]]; }
   }
   G.winds[playerIdx] = wind;
+
+  /* auto-remplir le 4e joueur si 3 vents sont attribués */
+  var assigned = [];
+  for (var i = 0; i < 4; i++) { if (G.winds[i]) assigned.push(G.winds[i]); }
+  if (assigned.length === 3) {
+    var remaining = null;
+    for (var w = 0; w < WINDS.length; w++) {
+      if (assigned.indexOf(WINDS[w]) === -1) { remaining = WINDS[w]; break; }
+    }
+    if (remaining) {
+      for (var j = 0; j < 4; j++) {
+        if (!G.winds[j]) { G.winds[j] = remaining; break; }
+      }
+    }
+  }
+
   renderWinds();
 }
 
@@ -614,26 +657,35 @@ function validateWinds() {
 function buildPtsScreen() {
   document.getElementById('pts-sub').textContent = 'Manche ' + G.manches;
 
+  /* trier les joueurs par score d\u00e9croissant */
+  var sortedP = [];
+  for (var k = 0; k < 4; k++) { sortedP.push({ i: k, s: G.scores[k] }); }
+  sortedP.sort(function(a, b) { return b.s - a.s; });
+
   var mjHtml = '';
-  for (var i = 0; i < 4; i++) {
+  for (var r = 0; r < 4; r++) {
+    var i = sortedP[r].i;
     mjHtml += '<div class="mj-opt' + (G.mj === i ? ' sel' : '') + '" id="mj' + i + '" onclick="selMJ(' + i + ')">' +
       '<div class="mj-dot">\u2713</div>' +
       '<div class="avatar ' + AVCLASS[i] + '" style="width:34px;height:34px;font-size:14px">' + ini(G.players[i]) + '</div>' +
       '<div>' +
         '<div style="font-size:15px;font-weight:600">' + esc(G.players[i]) + '</div>' +
         '<span class="wchip w' + G.winds[i] + '">' + WCHAR[G.winds[i]] + ' ' + G.winds[i] + '</span>' +
+        (G.manches > 1 ? '<span style="font-size:11px;color:var(--txt2);margin-left:6px">' + fmt(G.scores[i]) + ' pts</span>' : '') +
       '</div>' +
       '</div>';
   }
   document.getElementById('mj-list').innerHTML = mjHtml;
 
   var ptsHtml = '';
-  for (var j = 0; j < 4; j++) {
+  for (var t = 0; t < 4; t++) {
+    var j = sortedP[t].i;
     ptsHtml += '<div class="prow">' +
       '<div class="avatar ' + AVCLASS[j] + '" style="width:34px;height:34px;font-size:14px">' + ini(G.players[j]) + '</div>' +
       '<div class="pname" style="font-size:14px">' +
         esc(G.players[j]) + '<br>' +
         '<span class="wchip w' + G.winds[j] + '">' + WCHAR[G.winds[j]] + ' ' + G.winds[j] + '</span>' +
+        (G.manches > 1 ? '<span style="font-size:11px;color:var(--txt2);margin-left:6px">' + fmt(G.scores[j]) + ' pts</span>' : '') +
       '</div>' +
       '<input type="number" id="p' + j + '" value="0" min="0" inputmode="numeric">' +
       '</div>';
